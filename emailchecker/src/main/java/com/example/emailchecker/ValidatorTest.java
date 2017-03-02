@@ -19,8 +19,16 @@ public class ValidatorTest {
 		assertEquals(Validator.validateEmail("failurecase."), false);
 	}
 	@Test
-	public void testBasicSuccess() {
-		assertEquals(Validator.validateEmail("sucesscase@."), true);
+	public void testFailureBadExtension() {
+		assertEquals(Validator.validateEmail("sucesscase@.aaa"), false);
+	}
+	@Test
+	public void testFailureStartingAt() {
+		assertEquals(Validator.validateEmail("@sucesscase.com"), false);
+	}
+	@Test
+	public void testSuccess() {
+		assertEquals(Validator.validateEmail("al884513@dal.ca"), true);
 	}
 
 }

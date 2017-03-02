@@ -7,7 +7,13 @@ public class Validator {
 		boolean atSign = (countMatches(email, '@') == 1);
 		boolean periods = (countMatches(email, '.') >= 1);
 		
-		result = atSign && periods;
+		//Custom rule: email address must not start with an '@'
+		boolean noLeadingAt = (email.charAt(0) != '@');
+		
+		//Custom rule: email address must end in '.com' or '.ca'
+		boolean validExt = (email.endsWith(".com")) || (email.endsWith(".ca"));
+		
+		result = atSign && periods && noLeadingAt && validExt;
 		return result;
 	}
 	
